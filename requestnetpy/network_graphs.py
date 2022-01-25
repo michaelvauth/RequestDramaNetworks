@@ -190,13 +190,13 @@ class Network:
                 'speeches': dict(speeches),
                 'degree': dict(degree),
                 'indegree': dict(indegree),
-                'weighted_indegree': weighted_indegree,
+                'weighted_indegree': dict(weighted_indegree),
                 'outdegree': dict(outdegree),
                 'weighted_outdegree': dict(weighted_outdegree),
                 'betweenness': dict(bc),
                 'betweenness_weighted': dict(bc_weighted),
-                'pagerank': pr,
-                'pagerank_weighted': pr_weighted,
+                'pagerank': dict(pr),
+                'pagerank_weighted': dict(pr_weighted),
             }
         )
         network_df.loc[:, 'request_value'] = request_value(network_df)

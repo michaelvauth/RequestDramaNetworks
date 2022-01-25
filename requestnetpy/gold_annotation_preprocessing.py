@@ -10,6 +10,14 @@ nlp = spacy.load("de_core_news_sm")
 
 
 def filter_for_speech_elements(df: pd.DataFrame) -> pd.DataFrame:
+    """Filters pandas DataFrame reprentation of merged CATMA AnnotationCollections.
+
+    Args:
+        df (pd.DataFrame): Merged AnnotationCollection
+
+    Returns:
+        pd.DataFrame: Only Annotations of GerDraCor <sp> elements or manual question and request elements.
+    """
     return df[
         (df.tag == 'sp') |
         (df.tag == 'question') |
