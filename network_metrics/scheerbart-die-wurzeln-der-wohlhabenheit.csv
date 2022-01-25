@@ -1,0 +1,16 @@
+,speeches,degree,indegree,outdegree,weighted_outdegree,betweenness,betweenness_weighted,pagerank,pagerank_weighted,request_value,gender,year
+kaiser,12,5.0,1.0,4.0,4.0,0.0,0.0,0.03870967741935484,0.03870967741935484,1.3333333333333333,MALE,1904
+zweiter_ratsherr_2,1,1.0,0.0,1.0,1.0,0.0,0.0,0.03048387096774194,0.03048387096774194,1.0,MALE,1904
+von_moellerkuchen,11,3.0,1.0,2.0,5.0,0.0,0.0,0.21127722933788054,0.21127722933788054,0.9090909090909091,MALE,1904
+kaeseberg,11,4.0,3.0,1.0,2.0,0.0,0.05,0.25542044826262367,0.25542044826262367,0.18181818181818182,MALE,1904
+wiedewitt,33,6.0,4.0,2.0,2.0,0.2,0.2,0.4253990965930446,0.4253990965930446,0.12121212121212122,MALE,1904
+der_ratsherr_3,1,1.0,1.0,0.0,0.0,0.0,0.0,0.03870967741935484,0.03870967741935484,0.0,MALE,1904
+zweiter_magistratsbeamter,1,,,,,,,,,,MALE,1904
+dritter_magistratsbeamter,1,,,,,,,,,,MALE,1904
+erster_ratsherr_2,1,,,,,,,,,,MALE,1904
+magistratsbeamter,1,,,,,,,,,,MALE,1904
+dritter_ratsherr_2,1,,,,,,,,,,MALE,1904
+alle_2,1,,,,,,,,,,,1904
+erster_ratsherr_3,1,,,,,,,,,,MALE,1904
+zweiter_ratsherr_3,1,,,,,,,,,,MALE,1904
+die_schildbuerger,6,,,,,,,,,,,1904

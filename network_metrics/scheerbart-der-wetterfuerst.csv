@@ -1,0 +1,4 @@
+,speeches,degree,indegree,outdegree,weighted_outdegree,betweenness,betweenness_weighted,pagerank,pagerank_weighted,request_value,gender,year
+lisabella,21,4,2,2,9,0.5,0.5,0.4285133721712732,0.4285133721712732,0.8571428571428571,FEMALE,1904
+roderich,10,3,1,2,2,0.0,0.0,0.2523534513538106,0.2523534513538106,0.4,MALE,1904
+jarrimo,17,3,2,1,2,0.0,0.0,0.31913317647491596,0.31913317647491596,0.11764705882352941,MALE,1904

@@ -1,0 +1,4 @@
+,speeches,degree,indegree,outdegree,weighted_outdegree,betweenness,betweenness_weighted,pagerank,pagerank_weighted,request_value,gender,year
+christine,10,2,1,1,4,0.0,0.0,0.1136175654885506,0.1136175654885506,0.4,FEMALE,1904
+ko-bo-so,67,4,2,2,13,1.0,1.0,0.48648582432442106,0.48648582432442106,0.3880597014925373,MALE,1904
+arabella,58,2,1,1,16,0.0,0.0,0.3998966101870284,0.3998966101870284,0.27586206896551724,FEMALE,1904

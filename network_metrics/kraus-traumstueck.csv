@@ -1,0 +1,12 @@
+,speeches,degree,indegree,outdegree,weighted_outdegree,betweenness,betweenness_weighted,pagerank,pagerank_weighted,request_value,gender,year
+baumkrone,1,1.0,0.0,1.0,1.0,0.0,0.0,0.08644932732972185,0.08644932732972185,1.0,UNKNOWN,1923
+die_psychoanalen,1,1.0,0.0,1.0,1.0,0.0,0.0,0.08644932732972185,0.08644932732972185,1.0,,1923
+der_traum,1,1.0,0.0,1.0,1.0,0.0,0.0,0.08644932732972185,0.08644932732972185,1.0,UNKNOWN,1923
+dichter,5,5.0,3.0,2.0,2.0,0.30000000000000004,0.30000000000000004,0.3068928339385125,0.3068928339385125,0.8,MALE,1923
+die_drei,1,1.0,1.0,0.0,0.0,0.0,0.0,0.21687959203616083,0.21687959203616083,0.0,,1923
+geraeusch,1,1.0,1.0,0.0,0.0,0.0,0.0,0.21687959203616083,0.21687959203616083,0.0,UNKNOWN,1923
+der_guertelpelz,1,,,,,,,,,,UNKNOWN,1923
+feldherr_techniker_journalist,1,,,,,,,,,,,1923
+tuberkuloeses_kind,1,,,,,,,,,,UNKNOWN,1923
+valuta_und_zinsfuss,1,,,,,,,,,,,1923
+imago,1,,,,,,,,,,UNKNOWN,1923

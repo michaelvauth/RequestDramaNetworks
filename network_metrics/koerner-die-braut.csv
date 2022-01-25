@@ -1,0 +1,4 @@
+,speeches,degree,indegree,outdegree,weighted_outdegree,betweenness,betweenness_weighted,pagerank,pagerank_weighted,request_value,gender,year
+sohn,66,5,2,3,27,0.5,0.5,0.460559102603166,0.460559102603166,1.2272727272727273,MALE,1812
+vater,63,2,1,1,27,0.0,0.0,0.4292108140936281,0.4292108140936281,0.42857142857142855,MALE,1812
+eine_weibliche_stimme,2,1,1,0,0,0.0,0.0,0.1102300833032054,0.1102300833032054,0.0,FEMALE,1812

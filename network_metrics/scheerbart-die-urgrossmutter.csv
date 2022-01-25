@@ -1,0 +1,4 @@
+,speeches,degree,indegree,outdegree,weighted_outdegree,betweenness,betweenness_weighted,pagerank,pagerank_weighted,request_value,gender,year
+manella,3,2,1,1,1,0.0,0.0,0.30319129027107367,0.30319129027107367,0.3333333333333333,FEMALE,1904
+urgrossmutter,16,3,1,2,2,0.5,0.5,0.39361741945785217,0.39361741945785217,0.25,FEMALE,1904
+constantin,13,1,1,0,0,0.0,0.0,0.30319129027107367,0.30319129027107367,0.0,MALE,1904

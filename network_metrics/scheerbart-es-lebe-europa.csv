@@ -1,0 +1,10 @@
+,speeches,degree,indegree,outdegree,weighted_outdegree,betweenness,betweenness_weighted,pagerank,pagerank_weighted,request_value,gender,year
+urban,24,3.0,1.0,2.0,4.0,0.0,0.0,0.4123710565962626,0.4123710565962626,0.3333333333333333,MALE,1904
+dr_langenbeck,9,1.0,1.0,0.0,0.0,0.0,0.0,0.5876289434037372,0.5876289434037372,0.0,MALE,1904
+haeser,11,,,,,,,,,,MALE,1904
+alter_herr_1,1,,,,,,,,,,MALE,1904
+zweiter_alter_herr,1,,,,,,,,,,MALE,1904
+junge_dame,1,,,,,,,,,,FEMALE,1904
+alter_herr_3,2,,,,,,,,,,MALE,1904
+alte_dame,1,,,,,,,,,,FEMALE,1904
+polizist,1,,,,,,,,,,MALE,1904

@@ -1,0 +1,4 @@
+,speeches,degree,indegree,outdegree,weighted_outdegree,betweenness,betweenness_weighted,pagerank,pagerank_weighted,request_value,gender,year
+der_geist,3,2.0,1.0,1.0,2.0,0.0,0.0,0.5,0.5,0.6666666666666666,UNKNOWN,1774
+der_fuerst,5,2.0,1.0,1.0,1.0,0.0,0.0,0.5,0.5,0.2,MALE,1774
+der_kammerherr,4,,,,,,,,,,MALE,1774
