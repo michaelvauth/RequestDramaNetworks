@@ -169,7 +169,10 @@ class Network:
 
         self.pos = network_layout(self.config_network)
 
-    def stats(self, network_type: str = 'request', gender_metadata: dict = None) -> pd.DataFrame:
+    def stats(
+            self,
+            network_type: str = 'request',
+            gender_metadata: dict = None) -> pd.DataFrame:
         stat_network = self.request_network if network_type == 'request' else self.com_network
 
         bc = nx.betweenness_centrality(stat_network, normalized=True)
@@ -211,17 +214,18 @@ class Network:
 
         return network_df.sort_values(by='request_value', ascending=False)
 
-    def plot(self, network_type: str = 'request'):
+    def plot(self, network_type: str = 'request',
+             plot_indegree: bool = False):
         if network_type == 'request':
             plot_graph = self.request_network
             plot_edges = self.request_edges
-            speaker_size = dict(plot_graph.in_degree())
-            addressee_size = dict(plot_graph.out_degree())
+            speaker_size = dict(plot_graph.out_degree())
+            addressee_size = dict(plot_graph.in_degree())
         elif network_type == 'com':
             plot_graph = self.com_network
             plot_edges = self.com_edges
-            speaker_size = dict(plot_graph.in_degree())
-            addressee_size = dict(plot_graph.out_degree())
+            speaker_size = dict(plot_graph.out_degree())
+            addressee_size = dict(plot_graph.in_degree())
         else:
             plot_graph = self.config_network
             plot_edges = self.config_edges
@@ -233,20 +237,31 @@ class Network:
         edge_weight_sum = sum([edge.weight for edge in plot_edges])
         for edge in plot_edges:
             lg = speaker_addressee_str(edge)
-
+            speaker_coordinates = speaker_point(
+                p1_x=self.pos[edge.addressee][0],
+                p1_y=self.pos[edge.addressee][1],
+                p2_x=self.pos[edge.speaker][0],
+                p2_y=self.pos[edge.speaker][1],
+                distance=0.03
+            )
+            addressee_coordinates = speaker_point(
+                p1_x=self.pos[edge.addressee][0],
+                p1_y=self.pos[edge.addressee][1],
+                p2_x=self.pos[edge.speaker][0],
+                p2_y=self.pos[edge.speaker][1],
+                distance=0.97
+            )
             # plot edges
-            if network_type == 'config':
+            if network_type == 'config':    # plot undirected network
                 fig.add_trace(
                     go.Scatter(
-                        x=[self.pos[edge.speaker][0],
-                            self.pos[edge.addressee][0]],
-                        y=[self.pos[edge.speaker][1],
-                            self.pos[edge.addressee][1]],
-                        opacity=0.5,
+                        x=[speaker_coordinates[0], addressee_coordinates[0]],
+                        y=[speaker_coordinates[1], addressee_coordinates[1]],
+                        opacity=0.3,
                         line={
                             'width': edge.weight / edge_weight_sum * 100 + 1,
                             'smoothing': 1.3,
-                            'color': 'green'
+                            'color': 'grey'
                         },
                         hoverinfo='skip',
                         name=lg,
@@ -255,23 +270,24 @@ class Network:
                         showlegend=False
                     )
                 )
-            else:
+            else:                           # plot directed network
+
                 fig.add_annotation(
-                    x=self.pos[edge.addressee][0],  # arrows' head
-                    y=self.pos[edge.addressee][1],  # arrows' head
-                    ax=self.pos[edge.speaker][0],  # arrows' tail
-                    ay=self.pos[edge.speaker][1],  # arrows' tail
+                    x=speaker_coordinates[0],  # arrows' head
+                    y=speaker_coordinates[1],  # arrows' head
+                    ax=addressee_coordinates[0],  # arrows' tail
+                    ay=addressee_coordinates[1],  # arrows' tail
                     xref='x',
                     yref='y',
                     axref='x',
                     ayref='y',
                     text='',  # if you want only the arrow
                     showarrow=True,
-                    arrowhead=1,
-                    arrowsize=0.3,
+                    arrowhead=4,
+                    arrowsize=0.6,
                     arrowwidth=edge.weight / edge_weight_sum * 100 + 1,
-                    arrowcolor='green',
-                    opacity=0.5
+                    arrowcolor='grey',
+                    opacity=0.3
                 )
             legend_groups.append(lg)
 
@@ -293,7 +309,7 @@ class Network:
                     name=lg,
                     text=f"<b>{lg}</b>:<br>{edge.text}",
                     marker=dict(
-                        color='green',
+                        color='grey',
                         opacity=0.4,
                         size=edge.weight / edge_weight_sum * 100 + 1
                     ),
@@ -309,47 +325,50 @@ class Network:
                 go.Scatter(
                     x=[self.pos[speaker][0]],
                     y=[self.pos[speaker][1]],
-                    opacity=0.5,
+                    opacity=1,
                     marker={
-                        'size': speaker_size[speaker] * 3,
-                        'color': 'blue',
-                        'opacity': 0.5
+                        'size': speaker_size[speaker] * 3 + 3,
+                        'color': 'black',
+                        'opacity': 1
                     },
                     text=speaker,
+                    textposition='top center',
                     mode='markers + text',
                     legendgroup=speaker,
                     showlegend=False,
                     hoverinfo='text',
-                    textfont_size=speaker_size[speaker] + 3
+                    textfont_size=speaker_size[speaker] + 6
                 )
             )
 
         for addressee in addressee_size:
             # plot outdegree
-            fig.add_trace(
-                go.Scatter(
-                    x=[self.pos[addressee][0]],
-                    y=[self.pos[addressee][1]],
-                    opacity=0.5,
-                    marker={
-                        'size': addressee_size[addressee] * 3,
-                        'color': 'red',
-                        'opacity': 0.5
-                    },
-                    text=f"{addressee.upper()}<br>indegree: {addressee_size[addressee]}<br>outdegree: {speaker_size[addressee]}",
-                    mode='markers',
-                    legendgroup=edge.addressee,
-                    showlegend=False,
-                    hoverinfo='text'
+            if plot_indegree:
+                fig.add_trace(
+                    go.Scatter(
+                        x=[self.pos[addressee][0]],
+                        y=[self.pos[addressee][1]],
+                        opacity=0.3,
+                        marker={
+                            'size': addressee_size[addressee] * 3,
+                            'color': 'black',
+                            'opacity': 0.3
+                        },
+                        text=f"{addressee.upper()}<br>indegree: {addressee_size[addressee]}<br>outdegree: {speaker_size[addressee]}",
+                        mode='markers',
+                        legendgroup=edge.addressee,
+                        showlegend=False,
+                        hoverinfo='text'
+                    )
                 )
-            )
 
         fig.update_layout(
             xaxis={'ticks': '', 'showticklabels': False},
             yaxis={'ticks': '', 'showticklabels': False},
             paper_bgcolor='rgba(0,0,0,0)',
             plot_bgcolor='rgba(0,0,0,0)',
-            height=600
+            height=600,
+            title=f'{network_type.upper()} GRAPH FOR {self.id.upper()}'
         )
         fig.show()
 

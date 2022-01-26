@@ -1,5 +1,5 @@
 # Network Analysis by Automated Request Annotations
-This repository provides a python package which automates the detection of speech requests in German dramas by and uses these annotations for network analysis.
+This repository provides a python package which automates the detection of speech requests in German dramas and uses these annotations for network analysis.
 
 ## Ressources
 
@@ -19,7 +19,7 @@ These annotations are created by the `requestnetpy.request_clf` (see below).
 ### network_metrics/
 Network stats based on the request annotations.
 
-### `requestnetpy`
+### `requestnetpy`/
 #### `.gold_annotation_preprocessing`
 Preprocessing functions to create training data from [CATMA](https://catma.de/) annotations.
 
