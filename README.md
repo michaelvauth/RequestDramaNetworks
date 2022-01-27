@@ -39,7 +39,7 @@ Each `<sp>` element is represented in this structure:
             speaker: "licht",
             addressee: "adam"
         }
-]
+    ]
 }
 ```
 These annotations are created by the `requestnetpy.request_clf` (see below).
