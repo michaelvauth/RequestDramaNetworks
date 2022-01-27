@@ -57,6 +57,42 @@ Manual request annotations of four German plays:
 - kleist-die-familie-schroffenstein
 - schlegel-canut
 - wedekind-fruehlings-erwachen
+```
+{
+    play: "kleist-der-zerbrochene-krug",
+    text: "Ei, was zum Henker, sagt, Gevatter Adam! Was ist mit Euch geschehn? Wie seht Ihr aus? ",
+    start_point: 1147,
+    end_point: 1242,
+    speaker: "licht",
+    request: "True",
+    manual_annotations: [
+        {
+            annotation: "Ei, was zum Henker, sagt, Gevatter Adam!",
+            tag: "request",
+            start_point: 1154,
+            end_point: 1194,
+            speaker: "licht",
+            addressee: "adam"
+        },
+        {
+            annotation: "Was ist mit Euch geschehn?",
+            tag: "question",
+            start_point: 1195,
+            end_point: 1221,
+            speaker: "licht",
+            addressee: "adam"
+        },
+        {
+            annotation: "Wie seht Ihr aus?",
+            tag: "question",
+            start_point: 1222,
+            end_point: 1239,
+            speaker: "licht",
+            addressee: "adam"
+        }
+    ]
+}
+```
 
 ### network_plots.ipynb
 Jupyte Notebook to illustrate the network types with network graph as interactive plotly plots.
