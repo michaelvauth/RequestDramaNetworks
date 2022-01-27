@@ -7,40 +7,20 @@ This repository provides a python package which automates the detection of speec
 Speech request annotations for each `<sp>` element in the TEI encoded plays of [GerDraCor](https://dracor.org/ger).
 Each `<sp>` element is represented in this structure:
 ```
-{
-    play: "kleist-der-zerbrochene-krug",
-    text: "Ei, was zum Henker, sagt, Gevatter Adam! Was ist mit Euch geschehn? Wie seht Ihr aus? ",
-    start_point: 1147,
-    end_point: 1242,
-    speaker: "licht",
-    request: "True",
-    manual_annotations: [
-        {
-            annotation: "Ei, was zum Henker, sagt, Gevatter Adam!",
-            tag: "request",
-            start_point: 1154,
-            end_point: 1194,
-            speaker: "licht",
-            addressee: "adam"
-        },
-        {
-            annotation: "Was ist mit Euch geschehn?",
-            tag: "question",
-            start_point: 1195,
-            end_point: 1221,
-            speaker: "licht",
-            addressee: "adam"
-        },
-        {
-            annotation: "Wie seht Ihr aus?",
-            tag: "question",
-            start_point: 1222,
-            end_point: 1239,
-            speaker: "licht",
-            addressee: "adam"
-        }
-    ]
-}
+[
+    {
+        "speaker":"danton",
+        "speeches":"Bürger Biron, vormals Herzog von Lauzun, Du bist von der Rheinarmee versetzt zur Armee der Vendée und erhältst ein Armeekorps.",
+        "scene":1,
+        "request_classification":"False"
+    },
+    {
+        "speaker":"biron",
+        "speeches":"In die Vendée?! Pfui Teufel! Gegen Landsleute!",
+        "scene":1,
+        "request_classification":"True"
+    }
+]
 ```
 These annotations are created by the `requestnetpy.request_clf` (see below).
 
