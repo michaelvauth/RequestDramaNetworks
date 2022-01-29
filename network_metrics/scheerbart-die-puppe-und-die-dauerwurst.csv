@@ -1,4 +1,4 @@
-,speeches,degree,indegree,outdegree,weighted_outdegree,betweenness,betweenness_weighted,pagerank,pagerank_weighted,request_value,gender,year
-der_gruene,17,6,3,3,7,0.5,0.5,0.4541347920558403,0.4541347920558403,1.2352941176470589,MALE,1897
-johann,16,3,1,2,6,0.0,0.0,0.27057908997659547,0.27057908997659547,0.75,MALE,1897
-jakob,9,3,2,1,1,0.0,0.0,0.27528611796756414,0.27528611796756414,0.1111111111111111,MALE,1897
+,speeches,degree,indegree,weighted_indegree,outdegree,weighted_outdegree,betweenness,betweenness_weighted,pagerank,pagerank_weighted,request_value,gender,year
+der_gruene,17,6,3,5,3,7,0.5,0.5,0.4541347920558403,0.4541347920558403,1.2352941176470589,MALE,1897
+johann,16,3,1,4,2,6,0.0,0.0,0.27057908997659547,0.27057908997659547,0.75,MALE,1897
+jakob,9,3,2,5,1,1,0.0,0.0,0.27528611796756414,0.27528611796756414,0.1111111111111111,MALE,1897

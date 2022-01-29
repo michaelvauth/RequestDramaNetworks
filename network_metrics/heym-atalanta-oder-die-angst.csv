@@ -1,4 +1,4 @@
-,speeches,degree,indegree,outdegree,weighted_outdegree,betweenness,betweenness_weighted,pagerank,pagerank_weighted,request_value,gender,year
-bartolomeo,50,2,1,1,35,0.0,0.0,0.28638711669341926,0.28638711669341926,0.7,MALE,1911
-atalanta,74,4,2,2,15,1.0,1.0,0.4635028441894461,0.4635028441894461,0.40540540540540543,FEMALE,1911
-sigismondo,26,4,2,2,5,0.0,0.0,0.2501100391171345,0.2501100391171345,0.38461538461538464,MALE,1911
+,speeches,degree,indegree,weighted_indegree,outdegree,weighted_outdegree,betweenness,betweenness_weighted,pagerank,pagerank_weighted,request_value,gender,year
+bartolomeo,50,2,1,9,1,35,0.0,0.0,0.28638711669341926,0.28638711669341926,0.7,MALE,1911
+atalanta,74,4,2,39,2,15,1.0,1.0,0.4635028441894461,0.4635028441894461,0.40540540540540543,FEMALE,1911
+sigismondo,26,4,2,7,2,5,0.0,0.0,0.2501100391171345,0.2501100391171345,0.38461538461538464,MALE,1911

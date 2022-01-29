@@ -1,4 +1,4 @@
-,speeches,degree,indegree,outdegree,weighted_outdegree,betweenness,betweenness_weighted,pagerank,pagerank_weighted,request_value,gender,year
-dianora,47,5,3,2,24,0.5,0.5,0.5083922641433285,0.5083922641433285,1.0212765957446808,FEMALE,1898
-braccio,9,3,1,2,4,0.0,0.0,0.0634920634920635,0.0634920634920635,0.8888888888888888,MALE,1898
-amme,34,2,1,1,4,0.0,0.0,0.428115672364608,0.428115672364608,0.11764705882352941,FEMALE,1898
+,speeches,degree,indegree,weighted_indegree,outdegree,weighted_outdegree,betweenness,betweenness_weighted,pagerank,pagerank_weighted,request_value,gender,year
+dianora,47,5,3,10,2,24,0.5,0.5,0.5083922641433285,0.5083922641433285,1.0212765957446808,FEMALE,1898
+braccio,9,3,1,1,2,4,0.0,0.0,0.0634920634920635,0.0634920634920635,0.8888888888888888,MALE,1898
+amme,34,2,1,21,1,4,0.0,0.0,0.428115672364608,0.428115672364608,0.11764705882352941,FEMALE,1898

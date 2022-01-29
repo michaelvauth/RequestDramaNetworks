@@ -1,6 +1,5 @@
-,speeches,degree,indegree,outdegree,weighted_outdegree,betweenness,betweenness_weighted,pagerank,pagerank_weighted,request_value,gender,year
-marikanno,9,4.0,1.0,3.0,3.0,0.3333333333333333,0.3333333333333333,0.3245609358176832,0.3245609358176832,1.0,FEMALE,1904
-mossino,4,2.0,1.0,1.0,1.0,0.0,0.0,0.2251463547274389,0.2251463547274389,0.25,MALE,1904
-passeck,7,1.0,1.0,0.0,0.0,0.0,0.0,0.2251463547274389,0.2251463547274389,0.0,MALE,1904
-kefinska,7,1.0,1.0,0.0,0.0,0.0,0.0,0.2251463547274389,0.2251463547274389,0.0,FEMALE,1904
-lissamatsch,1,,,,,,,,,,FEMALE,1904
+,speeches,degree,indegree,weighted_indegree,outdegree,weighted_outdegree,betweenness,betweenness_weighted,pagerank,pagerank_weighted,request_value,gender,year
+marikanno,9,4.0,1.0,1.0,3.0,3.0,0.3333333333333333,0.3333333333333333,0.3245609358176832,0.3245609358176832,1.0,FEMALE,1904
+mossino,4,2.0,1.0,1.0,1.0,1.0,0.0,0.0,0.2251463547274389,0.2251463547274389,0.25,MALE,1904
+passeck,7,1.0,1.0,1.0,0.0,0.0,0.0,0.0,0.2251463547274389,0.2251463547274389,0.0,MALE,1904
+kefinska,7,1.0,1.0,1.0,0.0,0.0,0.0,0.0,0.2251463547274389,0.2251463547274389,0.0,FEMALE,1904

@@ -1,10 +1,6 @@
-,speeches,degree,indegree,outdegree,weighted_outdegree,betweenness,betweenness_weighted,pagerank,pagerank_weighted,request_value,gender,year
-ein_strassenkehrer,1,1.0,0.0,1.0,1.0,0.0,0.0,0.07715940827934686,0.07715940827934686,1.0,MALE,1904
-knoblauch,24,3.0,1.0,2.0,5.0,0.08333333333333333,0.08333333333333333,0.3382589070496044,0.3382589070496044,0.4166666666666667,MALE,1904
-polizei-inspektor,15,2.0,1.0,1.0,6.0,0.0,0.0,0.30717384645774126,0.30717384645774126,0.4,MALE,1904
-zweiter_strassenkehrer,1,1.0,1.0,0.0,0.0,0.0,0.0,0.1427448203893625,0.1427448203893625,0.0,MALE,1904
-ein_dichter,1,1.0,1.0,0.0,0.0,0.0,0.0,0.13466301782394546,0.13466301782394546,0.0,MALE,1904
-lord,1,,,,,,,,,,MALE,1904
-knussel,2,,,,,,,,,,MALE,1904
-merribur,1,,,,,,,,,,MALE,1904
-klatsch,1,,,,,,,,,,MALE,1904
+,speeches,degree,indegree,weighted_indegree,outdegree,weighted_outdegree,betweenness,betweenness_weighted,pagerank,pagerank_weighted,request_value,gender,year
+ein_strassenkehrer,1,1.0,0.0,0.0,1.0,1.0,0.0,0.0,0.07715940827934686,0.07715940827934686,1.0,MALE,1904
+knoblauch,24,3.0,1.0,6.0,2.0,5.0,0.08333333333333333,0.08333333333333333,0.3382589070496044,0.3382589070496044,0.4166666666666667,MALE,1904
+polizei-inspektor,15,2.0,1.0,4.0,1.0,6.0,0.0,0.0,0.30717384645774126,0.30717384645774126,0.4,MALE,1904
+zweiter_strassenkehrer,1,1.0,1.0,1.0,0.0,0.0,0.0,0.0,0.1427448203893625,0.1427448203893625,0.0,MALE,1904
+ein_dichter,1,1.0,1.0,1.0,0.0,0.0,0.0,0.0,0.13466301782394546,0.13466301782394546,0.0,MALE,1904

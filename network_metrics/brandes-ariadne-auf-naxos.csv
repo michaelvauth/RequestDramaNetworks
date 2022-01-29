@@ -1,4 +1,4 @@
-,speeches,degree,indegree,outdegree,weighted_outdegree,betweenness,betweenness_weighted,pagerank,pagerank_weighted,request_value,gender,year
-ariadne,8,3,1,2,6,0.5,0.5,0.3744309122619871,0.3744309122619871,1.5,FEMALE,1775
-theseus,5,2,1,1,4,0.0,0.0,0.2597402541593285,0.2597402541593285,0.8,MALE,1775
-die_stimme_der_oreade,4,1,1,0,0,0.0,0.0,0.36582883357868395,0.36582883357868395,0.0,FEMALE,1775
+,speeches,degree,indegree,weighted_indegree,outdegree,weighted_outdegree,betweenness,betweenness_weighted,pagerank,pagerank_weighted,request_value,gender,year
+ariadne,8,3,1,4,2,6,0.5,0.5,0.3744309122619871,0.3744309122619871,1.5,FEMALE,1775
+theseus,5,2,1,2,1,4,0.0,0.0,0.2597402541593285,0.2597402541593285,0.8,MALE,1775
+die_stimme_der_oreade,4,1,1,4,0,0,0.0,0.0,0.36582883357868395,0.36582883357868395,0.0,FEMALE,1775

@@ -1,5 +1,4 @@
-,speeches,degree,indegree,outdegree,weighted_outdegree,betweenness,betweenness_weighted,pagerank,pagerank_weighted,request_value,gender,year
-kadidja,64,3.0,1.0,2.0,18.0,0.0,0.0,0.3343805483242668,0.3343805483242668,0.5625,FEMALE,1908
-buridan,99,4.0,2.0,2.0,10.0,0.5,0.5,0.47795183530652946,0.47795183530652946,0.20202020202020202,MALE,1908
-dr_prantl,36,3.0,2.0,1.0,7.0,0.0,0.5,0.18766761636920365,0.18766761636920365,0.19444444444444445,MALE,1908
-die_zofe,4,,,,,,,,,,FEMALE,1908
+,speeches,degree,indegree,weighted_indegree,outdegree,weighted_outdegree,betweenness,betweenness_weighted,pagerank,pagerank_weighted,request_value,gender,year
+kadidja,64,3.0,1.0,7.0,2.0,18.0,0.0,0.0,0.3343805483242668,0.3343805483242668,0.5625,FEMALE,1908
+buridan,99,4.0,2.0,24.0,2.0,10.0,0.5,0.5,0.47795183530652946,0.47795183530652946,0.20202020202020202,MALE,1908
+dr_prantl,36,3.0,2.0,4.0,1.0,7.0,0.0,0.5,0.18766761636920365,0.18766761636920365,0.19444444444444445,MALE,1908

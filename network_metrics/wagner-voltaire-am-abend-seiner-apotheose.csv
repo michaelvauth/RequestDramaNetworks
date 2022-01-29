@@ -1,4 +1,4 @@
-,speeches,degree,indegree,outdegree,weighted_outdegree,betweenness,betweenness_weighted,pagerank,pagerank_weighted,request_value,gender,year
-voltaire,28,4,2,2,12,0.5,0.5,0.4667036454500093,0.4667036454500093,0.8571428571428571,MALE,1778
-amme,17,3,1,2,5,0.0,0.5,0.21529036683903952,0.21529036683903952,0.5882352941176471,FEMALE,1778
-gespenst,11,3,2,1,1,0.0,0.5,0.3180059877109508,0.3180059877109508,0.09090909090909091,UNKNOWN,1778
+,speeches,degree,indegree,weighted_indegree,outdegree,weighted_outdegree,betweenness,betweenness_weighted,pagerank,pagerank_weighted,request_value,gender,year
+voltaire,28,4,2,5,2,12,0.5,0.5,0.4667036454500093,0.4667036454500093,0.8571428571428571,MALE,1778
+amme,17,3,1,5,2,5,0.0,0.5,0.21529036683903952,0.21529036683903952,0.5882352941176471,FEMALE,1778
+gespenst,11,3,2,8,1,1,0.0,0.5,0.3180059877109508,0.3180059877109508,0.09090909090909091,UNKNOWN,1778

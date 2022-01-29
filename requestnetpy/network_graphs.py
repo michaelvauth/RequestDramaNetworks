@@ -167,6 +167,7 @@ class Network:
         self.request_network = create_network_from_edges(
             edges=self.request_edges, network_type='request')
 
+        self.network_layout = network_layout
         self.pos = network_layout(self.config_network)
 
     def stats(
@@ -212,25 +213,48 @@ class Network:
             ]
             network_df.loc[:, 'gender'] = character_gender
 
+        network_df = network_df[network_df.degree > 0]
         return network_df.sort_values(by='request_value', ascending=False)
 
-    def plot(self, network_type: str = 'request',
-             plot_indegree: bool = False):
+    def plot(
+            self,
+            network_type: str = 'request',
+            node_size: str = 'request_value',
+            node_factor: float = 100.0,
+            node_alpha: int = 3,
+            specified_layout: bool = False,):
+
+        def norm_col(value: float, values: pd.Series) -> float:
+            return value / sum(values)
+
         if network_type == 'request':
             plot_graph = self.request_network
             plot_edges = self.request_edges
-            speaker_size = dict(plot_graph.out_degree())
-            addressee_size = dict(plot_graph.in_degree())
+            stats = self.stats(network_type=network_type).fillna(value=0)
+            speaker_size = dict(
+                stats[node_size].apply(
+                    norm_col,
+                    args=(stats[node_size],)
+                )
+            )
+            if specified_layout:
+                self.pos = self.network_layout(self.request_network)
         elif network_type == 'com':
             plot_graph = self.com_network
             plot_edges = self.com_edges
-            speaker_size = dict(plot_graph.out_degree())
-            addressee_size = dict(plot_graph.in_degree())
+            stats = self.stats(network_type=network_type).fillna(value=0)
+            speaker_size = dict(
+                stats[node_size].apply(
+                    norm_col,
+                    args=(stats[node_size],)
+                )
+            )
+            if specified_layout:
+                self.pos = self.network_layout(self.com_network)
         else:
             plot_graph = self.config_network
             plot_edges = self.config_edges
             speaker_size = dict(plot_graph.degree())
-            addressee_size = dict(plot_graph.degree())
 
         fig = go.Figure()
         legend_groups = []
@@ -271,7 +295,6 @@ class Network:
                     )
                 )
             else:                           # plot directed network
-
                 fig.add_annotation(
                     x=speaker_coordinates[0],  # arrows' head
                     y=speaker_coordinates[1],  # arrows' head
@@ -327,7 +350,7 @@ class Network:
                     y=[self.pos[speaker][1]],
                     opacity=1,
                     marker={
-                        'size': speaker_size[speaker] * 3 + 3,
+                        'size': speaker_size[speaker] * node_factor + node_alpha,
                         'color': 'black',
                         'opacity': 1
                     },
@@ -337,34 +360,14 @@ class Network:
                     legendgroup=speaker,
                     showlegend=False,
                     hoverinfo='text',
-                    textfont_size=speaker_size[speaker] + 6
+                    textfont_size=speaker_size[speaker] *
+                    node_factor + node_alpha
                 )
             )
 
-        for addressee in addressee_size:
-            # plot outdegree
-            if plot_indegree:
-                fig.add_trace(
-                    go.Scatter(
-                        x=[self.pos[addressee][0]],
-                        y=[self.pos[addressee][1]],
-                        opacity=0.3,
-                        marker={
-                            'size': addressee_size[addressee] * 3,
-                            'color': 'black',
-                            'opacity': 0.3
-                        },
-                        text=f"{addressee.upper()}<br>indegree: {addressee_size[addressee]}<br>outdegree: {speaker_size[addressee]}",
-                        mode='markers',
-                        legendgroup=edge.addressee,
-                        showlegend=False,
-                        hoverinfo='text'
-                    )
-                )
-
         fig.update_layout(
-            xaxis={'ticks': '', 'showticklabels': False},
-            yaxis={'ticks': '', 'showticklabels': False},
+            xaxis={'ticks': '', 'showticklabels': False, 'showgrid': False},
+            yaxis={'ticks': '', 'showticklabels': False, 'showgrid': False},
             paper_bgcolor='rgba(0,0,0,0)',
             plot_bgcolor='rgba(0,0,0,0)',
             height=600,
@@ -373,7 +376,7 @@ class Network:
         fig.show()
 
         if network_type in ['com', 'request']:
-            display(self.stats(network_type=network_type))
+            display(stats)
 
         return fig
 
