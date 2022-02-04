@@ -103,4 +103,5 @@ nltk==3.6.7\
 plotly==5.5.0\
 pandas==1.4.0\
 scikit-learn==1.0.2\
+scipy==1.7.3\
 spacy==3.2.1

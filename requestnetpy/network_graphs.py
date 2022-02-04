@@ -1,5 +1,6 @@
 import os
 import difflib
+from turtle import width
 import pandas as pd
 import networkx as nx
 from pathy import importlib
@@ -222,7 +223,9 @@ class Network:
             node_size: str = 'request_value',
             node_factor: float = 100.0,
             node_alpha: int = 3,
-            specified_layout: bool = False,):
+            specified_layout: bool = False,
+            plot_stats: bool = True,
+            print_title: bool = False):
 
         def norm_col(value: float, values: pd.Series) -> float:
             return value / sum(values)
@@ -238,7 +241,8 @@ class Network:
                 )
             )
             if specified_layout:
-                self.pos = self.network_layout(self.request_network)
+                self.pos = self.network_layout(
+                    self.request_network, weight=None)
         elif network_type == 'com':
             plot_graph = self.com_network
             plot_edges = self.com_edges
@@ -250,7 +254,7 @@ class Network:
                 )
             )
             if specified_layout:
-                self.pos = self.network_layout(self.com_network)
+                self.pos = self.network_layout(self.com_network, weight=None)
         else:
             plot_graph = self.config_network
             plot_edges = self.config_edges
@@ -352,9 +356,9 @@ class Network:
                     marker={
                         'size': speaker_size[speaker] * node_factor + node_alpha,
                         'color': 'black',
-                        'opacity': 1
+                        'opacity': 0.65
                     },
-                    text=speaker,
+                    text=speaker.upper().replace('_', ' '),
                     textposition='top center',
                     mode='markers + text',
                     legendgroup=speaker,
@@ -366,19 +370,168 @@ class Network:
             )
 
         fig.update_layout(
+            template="simple_white",
+            xaxis={'ticks': '', 'showticklabels': False,
+                   'showgrid': False, 'visible': False},
+            yaxis={'ticks': '', 'showticklabels': False,
+                   'showgrid': False, 'visible': False},
+            height=600,
+            width=1000,
+            title=f'{network_type.upper()} GRAPH FOR {self.id.upper()}' if print_title else None
+        )
+
+        fig.show()
+
+        if network_type in ['com', 'request'] and plot_stats:
+            display(stats)
+
+        return fig
+
+    def plot_subplot(self,
+                     fig: go.Figure,
+                     subplot_number: int,
+                     row: int,
+                     col: int,
+                     network_type: str = 'request',
+                     node_size: str = 'request_value',
+                     node_factor: float = 100.0,
+                     node_alpha: int = 3,
+                     specified_layout: bool = False):
+        def norm_col(value: float, values: pd.Series) -> float:
+            return value / sum(values)
+
+        if network_type == 'request':
+            plot_graph = self.request_network
+            plot_edges = self.request_edges
+            stats = self.stats(network_type=network_type).fillna(value=0)
+            speaker_size = dict(
+                stats[node_size].apply(
+                    norm_col,
+                    args=(stats[node_size],)
+                )
+            )
+            if specified_layout:
+                self.pos = self.network_layout(self.request_network)
+        elif network_type == 'com':
+            plot_graph = self.com_network
+            plot_edges = self.com_edges
+            stats = self.stats(network_type=network_type).fillna(value=0)
+            speaker_size = dict(
+                stats[node_size].apply(
+                    norm_col,
+                    args=(stats[node_size],)
+                )
+            )
+            if specified_layout:
+                self.pos = self.network_layout(self.com_network)
+        else:
+            plot_graph = self.config_network
+            plot_edges = self.config_edges
+            speaker_size = dict(plot_graph.degree())
+
+        legend_groups = []
+        edge_weight_sum = sum([edge.weight for edge in plot_edges])
+        for edge in plot_edges:
+            lg = speaker_addressee_str(edge)
+            speaker_coordinates = speaker_point(
+                p1_x=self.pos[edge.addressee][0],
+                p1_y=self.pos[edge.addressee][1],
+                p2_x=self.pos[edge.speaker][0],
+                p2_y=self.pos[edge.speaker][1],
+                distance=0.03
+            )
+            addressee_coordinates = speaker_point(
+                p1_x=self.pos[edge.addressee][0],
+                p1_y=self.pos[edge.addressee][1],
+                p2_x=self.pos[edge.speaker][0],
+                p2_y=self.pos[edge.speaker][1],
+                distance=0.97
+            )
+            # plot edges
+            fig.add_trace(
+                go.Scatter(
+                    x=[speaker_coordinates[0], addressee_coordinates[0]],
+                    y=[speaker_coordinates[1], addressee_coordinates[1]],
+                    opacity=0.3,
+                    line={
+                        'width': edge.weight / edge_weight_sum * 100 + 1,
+                        'smoothing': 1.3,
+                        'color': 'grey'
+                    },
+                    hoverinfo='skip',
+                    name=lg,
+                    mode='lines',
+                    legendgroup=lg,
+                    showlegend=False
+                ),
+                row=row,
+                col=col
+            )
+            legend_groups.append(lg)
+
+            # plot hovertext per edge
+            hover_pos = speaker_point(
+                p1_x=self.pos[edge.speaker][0],
+                p1_y=self.pos[edge.speaker][1],
+                p2_x=self.pos[edge.addressee][0],
+                p2_y=self.pos[edge.addressee][1]
+            )
+            if len(edge.text) > 500:
+                edge.text = edge.text[:500] + '<br>[...]'
+            fig.add_trace(
+                go.Scatter(
+                    x=[hover_pos[0]],
+                    y=[hover_pos[1]],
+                    mode='markers',
+                    marker_symbol='cross-thin',
+                    name=lg,
+                    text=f"<b>{lg}</b>:<br>{edge.text}",
+                    marker=dict(
+                        color='grey',
+                        opacity=0.4,
+                        size=edge.weight / edge_weight_sum * 100 + 1
+                    ),
+                    showlegend=False,
+                    hoverinfo='text'
+                ),
+                row=row,
+                col=col
+            )
+
+        # plot nodes
+        for speaker in speaker_size:
+            # plot indegree
+            fig.add_trace(
+                go.Scatter(
+                    x=[self.pos[speaker][0]],
+                    y=[self.pos[speaker][1]],
+                    opacity=1,
+                    marker={
+                        'size': speaker_size[speaker] * node_factor + node_alpha,
+                        'color': 'black',
+                        'opacity': 1
+                    },
+                    text=speaker,
+                    textposition='top center',
+                    mode='markers + text',
+                    legendgroup=speaker,
+                    showlegend=False,
+                    hoverinfo='text',
+                    textfont_size=speaker_size[speaker] *
+                    node_factor + node_alpha
+                ),
+                row=row,
+                col=col
+            )
+
+        fig.update_layout(
             xaxis={'ticks': '', 'showticklabels': False, 'showgrid': False},
             yaxis={'ticks': '', 'showticklabels': False, 'showgrid': False},
             paper_bgcolor='rgba(0,0,0,0)',
             plot_bgcolor='rgba(0,0,0,0)',
-            height=600,
-            title=f'{network_type.upper()} GRAPH FOR {self.id.upper()}'
+            height=700,
+            width=1000
         )
-        fig.show()
-
-        if network_type in ['com', 'request']:
-            display(stats)
-
-        return fig
 
     def save_network_plot(self, network_type: str) -> None:
         fig = self.plot(network_type=network_type)
